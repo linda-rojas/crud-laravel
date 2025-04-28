@@ -23,9 +23,12 @@ class LibrosController extends Controller
     public function update(Request $request, Libros $libro)
     {
         $request->validate([
-            'nombre' => 'required|max:50',
+            //asegura que nombre sea unico
+            'nombre' => 'required|max:50|unique:libros,nombre,' . $libro->id,
             'descripcion' => 'required|max:255',
             'autor' => 'required|max:50',
+        ], [
+            'nombre.unique' => 'El nombre del libro ya está registrado',
         ]);
 
         $libro->update($request->all());
@@ -50,9 +53,11 @@ class LibrosController extends Controller
     {
         // (Request datos que enviamos desde el formulario)
         $request->validate([
-            'nombre' => 'required|max:50',
+            'nombre' => 'required|max:50|unique:libros,nombre', //asegura que nombre sea unico
             'descripcion' => 'required|max:255',
             'autor' => 'required|max:50',
+        ], [
+            'nombre.unique' => 'El nombre del libro ya está registrado, por favor ingrese otro.',
         ]);
 
         $libro = new Libros();
