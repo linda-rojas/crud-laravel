@@ -19,12 +19,10 @@
                         <label for="autor" class="form-label">Autor</label>
                         <input type="text" class="form-control" value="{{ $libro->autor }}" name="autor" required>
                     </div>
-                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success">Actualizar</button>
+                    </div>
                 </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>

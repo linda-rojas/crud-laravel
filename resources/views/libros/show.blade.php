@@ -18,9 +18,10 @@
                     <td>{{ $libro->descripcion }}</td>
                     <td>{{ $libro->autor }}</td>
                     <td>
-                        <button type="button" class="btn btn-info" data-target="#modal{{ $libro->id }}">Editar</button>
+                        <button type="button" class="btn btn-info text-white" data-bs-toggle="modal"
+                            data-bs-target="#modal{{ $libro->id }}">Editar</button>
                     </td>
-                    @include('libros.update');
+                    @include('libros.update')
                 </tr>
             @endforeach
         </tbody>

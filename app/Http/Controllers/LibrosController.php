@@ -22,7 +22,6 @@ class LibrosController extends Controller
 
     public function update(Request $request, Libros $libro)
     {
-
         $request->validate([
             'nombre' => 'required|max:50',
             'descripcion' => 'required|max:255',
@@ -30,7 +29,21 @@ class LibrosController extends Controller
         ]);
 
         $libro->update($request->all());
-        return view('libros/update', compact('libro'));
+        return redirect()->back()->with('success', 'Libro actualizado exitosamente.');
+    }
+
+    public function delete()
+    {
+        $libros = Libros::all();
+        return view('libros.delete', compact('libros'));
+    }
+
+    public function destroy(Libros $libro)
+    {
+        // ya se pasa el id del libro a eliminar en la ruta
+        // $libro = Libros::find($libro->id);
+        $libro->delete();
+        return redirect()->back()->with('success', 'Libro Eliminado exitosamente.');
     }
 
     public function store(Request $request)
